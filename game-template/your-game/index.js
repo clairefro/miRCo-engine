@@ -1,21 +1,21 @@
 export default class MircoGame {
   constructor({ input, assets, libs }) {
     /** Leave most of this stuff - it's to help you! */
-    this.input = input
-    this.assets = assets
-    this.libs = libs
+    this.input = input;
+    this.assets = assets;
+    this.libs = libs;
 
     this.state = {
       // defaults
       gameOver: false,
       won: false, // set false = lose by default, true = win by default
-    }
+    };
   }
 
   /** Create model */
   init(canvas) {
     // Initialize any custom game state
-    const customState = {}
+    const customState = {};
 
     // example:
     // const customState = {
@@ -34,14 +34,14 @@ export default class MircoGame {
     // };
 
     // leave this - merges default state with your state
-    this.state = { ...this.state, ...customState }
+    this.state = { ...this.state, ...customState };
   }
 
   /** logic to update game state */
   update(dt) {
     // this function gets called every tick
     // dt is deltaTime - time between ticks
-    const state = this.state
+    const state = this.state;
 
     /** do stuff with game state here - check for winning and losing! */
     // example
@@ -58,13 +58,13 @@ export default class MircoGame {
     //     // Move down
     //   }
     // IMPORTANT: call this method at the end of update()
-    this.draw()
+    this.draw();
   }
 
   /** render visuals based on game state */
   draw() {
-    const state = this.state
-    const p5 = this.libs.p5 // you can draw with this if you want https://p5js.org/reference/
+    const state = this.state;
+    const p5 = this.libs.p5; // you can draw with this if you want https://p5js.org/reference/
 
     /** Render stuff with p5.... */
 
@@ -105,6 +105,6 @@ export default class MircoGame {
 
   /** return true if game is won, false if lost */
   end() {
-    return this.state.won
+    return this.state.won;
   }
 }

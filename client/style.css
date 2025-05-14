@@ -12,7 +12,7 @@
   --game-height: 600px;
 
   /* Typography */
-  --font-family: 'Courier New', Courier, monospace;
+  --font-family: "Courier New", Courier, monospace;
   --font-size-small: 14px;
   --font-size-medium: 24px;
   --font-size-large: 32px;
@@ -68,8 +68,7 @@ canvas {
 
 .instruction-overlay.visible {
   opacity: 1;
-  animation:
-    bounceIn 0.4s var(--bounce-curve) forwards,
+  animation: bounceIn 0.4s var(--bounce-curve) forwards,
     fadeOut 0.3s ease forwards 0.7s;
 }
 

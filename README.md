@@ -132,12 +132,12 @@ index.js
 
 ```js
 p5.image(
-  this.assets['situp.png'],
+  this.assets["situp.png"],
   0,
   0,
   state.athlete.width,
   state.athlete.height
-)
+);
 ```
 
 ### Sound
@@ -172,10 +172,10 @@ index.js
 
 ```js
 // start sound
-this.libs.sound.play(this.assets['fart.mp3'])
+this.libs.sound.play(this.assets["fart.mp3"]);
 
 // stop sound
-this.libs.sound.stop(this.assets['fart.mp3'])
+this.libs.sound.stop(this.assets["fart.mp3"]);
 ```
 
 ### Inputs

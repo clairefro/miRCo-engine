@@ -1,11 +1,11 @@
-import { GameManager } from './gameManager.js'
+import { GameManager } from "./gameManager.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('#gameContainer')
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector("#gameContainer");
   if (!container) {
-    throw new Error('Game container element not found')
+    throw new Error("Game container element not found");
   }
 
-  const gameManager = new GameManager(container)
-  gameManager.init()
-})
+  const gameManager = new GameManager(container);
+  gameManager.init();
+});
