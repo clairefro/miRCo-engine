@@ -45,6 +45,7 @@ export default class MircoGame {
 
   /** logic to update game state */
   update(dt) {
+    console.log('step 1')
     const currentTime = Date.now()
     const state = this.state
 
@@ -53,6 +54,7 @@ export default class MircoGame {
       this.draw()
       return
     }
+     console.log('step 2')
 
     if (state.number >= state.sequence.length) {
       state.gameOver = true
@@ -61,10 +63,13 @@ export default class MircoGame {
       return
     }
 
+ 
     var target = state.sequence[state.number]
+     console.log('step 3', target )
     var targetFunction = this.lookup[target]
-
+    console.log('step 4', targetFunction)
     var targetPressed = targetFunction()
+        console.log('step 5')
     console.log(
       'target:',
       target,
