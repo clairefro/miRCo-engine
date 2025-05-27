@@ -132,7 +132,7 @@ export class MircoEngine {
     }
 
     const { p5, images } = await this.bootstrapP5(next.manifest)
-
+  
     // Initialize game
     this.currentGame = new next.module.default({
       input: this.input,
@@ -232,7 +232,8 @@ export class MircoEngine {
   async bootstrapP5(manifest) {
     const theP5 = new p5((p) => {
       p.setup = () => {
-        const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT)
+        let type = manifest.is3D ? p.WEBGL : p.P2D
+        const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, type )
         this.canvas = canvas
         canvas.parent(this.container)
         p.noLoop() // game manager will control looping

@@ -30,16 +30,17 @@ app.get('/api/games', async (req, res) => {
             'manifest.json'
           )
           try {
-            const manifest = JSON.parse(
+            const {assets = [], author, authorLink, instruction, is3D} = JSON.parse(
               await fs.readFile(manifestPath, 'utf-8')
             )
             return {
+              assets,
+              author,
+              authorLink,
+              instruction,
+              is3D,
               name: dirent.name,
               path: `/games/${dirent.name}/index.js`,
-              assets: manifest.assets || [],
-              instruction: manifest.instruction,
-              author: manifest.author,
-              authorLink: manifest.authorLink,
             }
           } catch (err) {
             console.error(`Error loading manifest for ${dirent.name}:`, err)
