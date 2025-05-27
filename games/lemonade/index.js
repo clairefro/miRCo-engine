@@ -13,6 +13,8 @@ export default class MircoGame {
 
 
   init(canvas) {
+ 
+
     const customState = {}
 
     // example:
@@ -65,11 +67,20 @@ export default class MircoGame {
     const p5 = this.libs.p5 // you can draw with this if you want https://p5js.org/reference/
 
     /** Render stuff with p5.... */
-    p5.background(200);
+    /** https://www.reddit.com/r/spaceengineers/comments/3e0k38/rgb_values_for_various_types_of_realworld_lights/ */
+    p5.ambientLight(64, 156, 255);
 
-  
+    // p5.pointLight(64, 156, 255, 100, 0, 0 )
+    p5.background(0);
 
-    p5.box(200, 200);
+    p5.box(200);
+    p5.rect(p5.mouseX - (800/2), p5.mouseY -(600/2), 200, 200)
+    p5.noStroke();
+
+    // p5.orbitControl();
+    console.log(p5.mouseX, p5.mouseY)
+    // p5.translate(p5.mouseX - (800/2), p5.mouseY -(600/2))
+    p5.ambientMaterial('orange')
     // p5.push();
     // p5.translate(
     //   state.athlete.x + state.athlete.width / 2,

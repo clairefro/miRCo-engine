@@ -12,7 +12,6 @@ const __dirname = path.dirname(__filename)
 // TODO: make the game path dynamic - or consider fetching games from remote
 const MICROGAMES_DIR = path.resolve(__dirname, './games')
 
-console.log({ MICROGAMES_DIR })
 
 // serve game assets
 app.use('/games', express.static(MICROGAMES_DIR))
