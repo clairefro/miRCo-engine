@@ -5,6 +5,7 @@ export default class MircoGame {
     this.libs = libs
     this.mirco = mirco
 
+    console.log(this.input)
     this.lookup = {
       '⬆️': this.input.isPressedUp,
       '⬇️': this.input.isPressedDown,

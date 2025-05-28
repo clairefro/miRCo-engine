@@ -56,7 +56,6 @@ export class MircoEngine {
         `Round: ${this.mirco.round}`
     }
 
-    console.log('splash', this.options)
     if (this.options.suppressSplash) {
       // hide splash, start gameplay
       this.ui.hideSplash()
@@ -233,23 +232,12 @@ export class MircoEngine {
   async bootstrapP5(manifest) {
    
     const theP5 = new p5((p) => {
-      // Theres a small bug here in context binding and switching
- 
       p.setup = () => {
         let type = manifest.is3D ? p.WEBGL : p.P2D
         const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, type )
         this.canvas = canvas
-        console.log('setup 1')
-        let customState = {}
-        // let bottle = p.loadModel('/games/lemonade/assets/bottle.obj', 'obj', true, (model) => {
-        //     console.log('✅ Model loaded:', model);
-        //     customState.bottleOpener = model;
-        //   }, (err) => {
-        //     console.error('❌ Model failed to load:', err);
-        //   });
-        // let bottleOpener = p.loadModel('/games/lemonade/assets/bottleOpener.obj', 'obj', true);
         canvas.parent(this.container)
-        p.noLoop() // game manager will control looping
+        p.noLoop()
       }
     }, this.container)
     const images = await this.gameLoader.loadImages(manifest, theP5)

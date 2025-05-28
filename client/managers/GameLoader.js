@@ -57,7 +57,7 @@ export class GameLoader {
           assets,
         })
       } catch (err) {
-        console.error(`Failed to load ${nextManifest.name}:`, err)
+        console.error(`Failed to load ${nextManifest.name || 'as no manifest name has been provided'}:`, err)
       }
     }
   }
@@ -73,8 +73,6 @@ export class GameLoader {
       if (filename.endsWith('.mp3') || filename.endsWith('.wav')) {
         assets[filename] = await this.loadAudio(basePath + filename, options)
       }
-
-
     }
 
     return assets
@@ -105,10 +103,6 @@ export class GameLoader {
     }
     return result
   }
-
-  // load model
-
-
   async loadAudio(path, options = {}) {
     const sound = new Howl({
       src: [path],
