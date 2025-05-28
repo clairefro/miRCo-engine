@@ -119,6 +119,19 @@ draw() {
     }
   }
 ```
+### Using WebGL (3D) drawing 
+
+The engine now supports the creation of 3D games!
+
+Here are som useful [p5 docs](https://p5js.org/reference/#3D%20Primitives)
+
+As well as a [really nice intro to working with 3D and p5](https://www.youtube.com/watch?v=nqiKWXUX-o8&list=PLRqwX-V7Uu6bPhi8sS1hHJ77n3zRO9FR_)
+
+To enable your games to make use of 3D rendering include the following key within your manifest.json
+
+`is3D : true`
+
+else it will default to 2D.
 
 ### Images
 
