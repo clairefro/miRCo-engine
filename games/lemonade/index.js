@@ -13,25 +13,15 @@ export default class MircoGame {
 
 
   init(canvas) {
- 
+    // let bottle = this.libs.canvasContext.loadModel('/games/lemonade/assets/bottle.obj');
+    // let bottleOpener = this.libs.canvasContext.loadModel('/games/lemonade/assets/bottleOpener.obj');
 
-    const customState = {}
-
-    // example:
-    // const customState = {
-    //   athlete: {
-    //     x: canvas.width / 2 - 40,
-    //     y: canvas.height - 100,
-    //     width: 80,
-    //     height: 80,
-    //     isDown: true,
-    //     sitUpCount: 0,
-    //   },
-    //   requiredSitUps: 5,
-    //   lastKeyState: false,
-    //   startTime: performance.now(),
-    //   message: "",
-    // };
+    let customState = {
+      // bottle,
+      // bottleOpener,
+      startTime: performance.now(),
+      message: "I'm thirsty",
+    };
 
     // leave this - merges default state with your state
     this.state = { ...this.state, ...customState }
@@ -39,8 +29,6 @@ export default class MircoGame {
 
   /** logic to update game state */
   update(dt) {
-    // this function gets called every tick
-    // dt is deltaTime - time between ticks
     const state = this.state
 
     /** do stuff with game state here - check for winning and losing! */
@@ -64,23 +52,24 @@ export default class MircoGame {
   /** render visuals based on game state */
   draw() {
     const state = this.state
+
     const p5 = this.libs.p5 // you can draw with this if you want https://p5js.org/reference/
-
-    /** Render stuff with p5.... */
-    /** https://www.reddit.com/r/spaceengineers/comments/3e0k38/rgb_values_for_various_types_of_realworld_lights/ */
+    p5.background(0)
     p5.ambientLight(64, 156, 255);
-
-    // p5.pointLight(64, 156, 255, 100, 0, 0 )
-    p5.background(0);
-
+    p5.orbitControl();
+  // Begin transformation stack
+    p5.push();
+    p5.translate(10, 0, 0);
     p5.box(200);
-    p5.rect(p5.mouseX - (800/2), p5.mouseY -(600/2), 200, 200)
-    p5.noStroke();
+    p5.ambientMaterial(255, 255, 0);
+    p5.pop(); // Reset to previous matrix
 
-    // p5.orbitControl();
-    console.log(p5.mouseX, p5.mouseY)
-    // p5.translate(p5.mouseX - (800/2), p5.mouseY -(600/2))
-    p5.ambientMaterial('orange')
+    p5.push();
+    p5.translate(10, 0, 0);
+    p5.noStroke();
+    p5.fill('green')
+    p5.rect(p5.mouseX - 400, p5.mouseY - 300, 200, 200);
+    p5.pop();
     // p5.push();
     // p5.translate(
     //   state.athlete.x + state.athlete.width / 2,
@@ -108,10 +97,7 @@ export default class MircoGame {
     // );
 
     // if (state.gameOver) {
-    //   p5.textSize(48);
-    //   p5.textAlign(p5.CENTER);
-    //   p5.fill(0, 255, 0); // green
-    //   p5.text(state.message, p5.width / 2, p5.height / 2);
+
     // }
   }
 
