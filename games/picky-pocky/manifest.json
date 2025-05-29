@@ -1,0 +1,7 @@
+{
+  "name": "picky-pocky",
+  "assets": ["finger.png","face.png","nose.png"],
+  "instruction": "Pick it UP!",
+  "author": "David Feil",
+  "authorLink": "https://wobblybits.blog"
+}
