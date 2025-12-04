@@ -1,6 +1,5 @@
 import { Howl } from 'howler'
 import p5 from 'p5'
-
 import { InputManager } from './managers/InputManager.js'
 import { GameLoader } from './managers/GameLoader.js'
 import { UIManager } from './managers/UIManager.js'
@@ -54,6 +53,7 @@ export class MircoEngine {
       this.scoreOverlay.querySelector('.round').textContent =
         `Round: ${this.mirco.round}`
     }
+
     if (this.options.suppressSplash) {
       // hide splash, start gameplay
       this.ui.hideSplash()
@@ -128,7 +128,7 @@ export class MircoEngine {
     try  {
 
     const { p5, images } = await this.bootstrapP5(next.manifest)
-
+  
     // Initialize game
     this.currentGame = new next.module.default({
       input: this.input,
@@ -231,12 +231,14 @@ export class MircoEngine {
   }
 
   async bootstrapP5(manifest) {
+   
     const theP5 = new p5((p) => {
       p.setup = () => {
-        const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT)
+        let type = manifest.is3D ? p.WEBGL : p.P2D
+        const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, type )
         this.canvas = canvas
         canvas.parent(this.container)
-        p.noLoop() // game manager will control looping
+        p.noLoop()
       }
     }, this.container)
     const images = await this.gameLoader.loadImages(manifest, theP5)
